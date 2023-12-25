@@ -1,0 +1,226 @@
+.singleDatePicker{
+    @apply flex p-3 mt-2 w-full rounded-md h-10 border border-gray-300 focus:outline-none;
+}
+.buttonContainer{
+    @apply flex justify-start items-center mt-8 mb-8;
+}
+.filterSelect1>.filterselect2>.css-b62m3t-container>.css-13cymwt-control{
+    border-radius: 8px !important;
+    padding: 5px !important;
+    font-size: 0.875rem !important;
+    border-color: rgb(190 186 186) !important;
+    padding-left: 8px !important;
+}
+.filterSelect1>.filterselect2>.css-b62m3t-container>.css-t3ipsp-control{
+    border-radius: 8px !important;
+    padding: 5px !important;
+    font-size: 0.875rem !important;
+    border-color: rgb(190 186 186) !important;
+    padding-left: 8px !important;
+    @apply !border  focus:outline-none focus:border focus:border-gray-300 hover:border hover:border-gray-300 focus:shadow-gray-400 hover:shadow-gray-400;
+}
+.filterSelect1>.filterselect3>.css-b62m3t-container>.css-13cymwt-control{
+    border-radius: 8px !important;
+    padding: 5px !important;
+    font-size: 0.875rem !important;
+    border-color: rgb(190 186 186) !important;
+    padding-left: 3px !important;
+}
+.filterSelect1>.filterselect3>.css-b62m3t-container>.css-t3ipsp-control{
+    border-radius: 8px !important;
+    padding: 5px !important;
+    font-size: 0.875rem !important;
+    border-color: rgb(190 186 186) !important;
+    padding-left: 3px !important;
+    @apply !border  focus:outline-none focus:border focus:border-gray-300 hover:border hover:border-gray-300 focus:shadow-gray-400 hover:shadow-gray-400;
+}
+.css-16xfy0z-control{
+    border-radius: 8px !important;
+    padding: 4px !important;
+    font-size: 0.875rem !important;
+    border-color: rgb(215, 212, 212) !important;
+    padding-left: 3px !important;
+    @apply !border !bg-gray-400 bg-opacity-20 focus:outline-none focus:border focus:border-gray-300 hover:border hover:border-gray-300 focus:shadow-gray-400 hover:shadow-gray-400;
+}
+.indexedStep {
+    color: rgb(190, 190, 190);
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(206, 206, 206);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.indexedStep.accomplished {
+    background-color: #664DE5;
+    color: white;
+    border-style: none;
+}
+
+.RSPBprogressBar {
+    height: 2px;
+    width: 60%;
+    line-height: 1;
+    border-radius: 10px;
+    position: relative;
+    background-color: rgb(207, 207, 207);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 0;
+    margin: 40px auto;
+}
+
+.RSPBprogressBar .RSPBstep {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 0;
+    position: absolute;
+    transform: translateX(-50%);
+    transition-property: all;
+    transition-timing-function: ease;
+}
+
+.RSPBprogressBar .RSPBprogressBarText {
+    color: white;
+    font-size: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.RSPBprogressBar .RSPBprogression {
+    position: absolute;
+    transition: width 0.3s ease;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    border-radius: 10px;
+    background: #664DE5;
+    z-index: -1;
+}
+
+.react-tabs__tab--selected{
+    background: none !important;
+    border: none !important;
+    border-bottom:2px solid rgb(44, 87, 205) !important;
+    /* border-radius: 6px !important; */
+}
+.tabList{
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: 1px solid gray;
+    text-align: center;
+    @apply flex text-sm font-medium text-center text-gray-500 border-b border-gray-400;
+}
+.inputWrapper{
+    width: 250px !important;
+    height: 40px;
+}
+.tabs{
+    margin-right: 10px;
+    padding: 10px;
+    color: gray;
+    cursor: pointer;
+    /* @apply text-gray-600  border-b border-gray-300 cursor-pointer; */
+}
+.childDatePicker{
+    @apply flex flex-row gap-2 w-full;
+
+}
+.switchOne {
+    display: inline-block;
+    width: 45px;
+    height: 23px;
+    position: relative;
+}
+.checkboxOne {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.toggle-thumb-one {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 40px;
+    /* border-color: black; */
+    border-width: 1px;
+    cursor: pointer;
+}
+
+.toggle-thumb-one::before {
+    content: "";
+    height: 16px;
+    width: 16px;
+    position: absolute;
+    left: 4px;
+    bottom: 3px;
+    border-radius: 50%;
+    background-color: white;
+    transition: 0.4s all ease;
+}
+
+.checkboxOne:checked+.toggle-thumb-one::before {
+    transform: translateX(20px);
+
+}
+
+.checkboxOne:checked+.toggle-thumb-one {
+    background-color: #868eff !important;
+
+}
+.yesClass{
+    @apply p-1 pl-1.5 text-[10px] font-medium text-[#000000];
+}
+.noClass{
+    @apply p-1 pr-1.5 text-[10px] font-medium text-[#000000];
+}
+.uploaderContainer{
+    @apply mt-4 mb-4;
+}
+.imageContainer{
+  @apply flex flex-col w-[400px] border-2 rounded p-2 mt-2;
+}
+.inputConatiner{
+    @apply mt-4 mr-4 w-full;
+}
+.imageWrapper{
+    height: 380px;
+    @apply w-[380px];
+}
+.uploadWrapper{
+    @apply !h-[250px] flex flex-col items-center justify-center !w-[250px] !bg-gray-100 border border-gray-400 mt-4 p-3 rounded-[15px];;
+}
+.uploadHeading{
+    @apply font-[inter] text-xl pt-2 pb-1;
+}
+.uploadSubHeading{
+    @apply font-[inter] text-xs pt-1 pb-2;
+}
+.labelClass{
+    @apply flex flex-col items-center justify-center w-full !h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 ;
+}
+.iconContainer{
+    @apply flex flex-col items-center justify-center pt-5 pb-6 border border-gray-300 w-[250px] h-[250px] rounded-lg;
+}
+.iconHeading{
+    @apply mb-2 text-sm text-gray-500 dark:text-gray-400;
+}
+.iconSubHeading{
+    @apply text-xs text-gray-500 dark:text-gray-400;
+}
