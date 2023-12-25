@@ -50,7 +50,7 @@ function SidebarContent() {
               <SearchIcon className="w-4 h-4" aria-hidden="true" />
             </div>
             <Input
-              className="pl-8 text-gray-700"
+              className="pl-8  text-gray-700"
               placeholder="EbeeTech"
               aria-label="Search"
             />

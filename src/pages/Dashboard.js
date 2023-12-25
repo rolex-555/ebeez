@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import CTA from '../components/CTA';
+import InfoCard from '../components/Cards/InfoCard';
+import ChartCard from '../components/Chart/ChartCard';
+import { Doughnut, Line } from 'react-chartjs-2';
+import ChartLegend from '../components/Chart/ChartLegend';
+import PageTitle from '../components/Typography/PageTitle';
+import { ChatIcon, CartIcon, MoneyIcon, PeopleIcon, EditIcon } from '../icons';
+import RoundIcon from '../components/RoundIcon';
+import { Button } from '@windmill/react-ui';
 
-import CTA from '../components/CTA'
-import InfoCard from '../components/Cards/InfoCard'
-import ChartCard from '../components/Chart/ChartCard'
-import { Doughnut, Line } from 'react-chartjs-2'
-import ChartLegend from '../components/Chart/ChartLegend'
-import PageTitle from '../components/Typography/PageTitle'
-import { ChatIcon, CartIcon, MoneyIcon, PeopleIcon,EditIcon } from '../icons'
-import RoundIcon from '../components/RoundIcon'
-import { Button } from '@windmill/react-ui'
-
-import response from '../utils/demo/tableData'
+import response from '../utils/demo/tableData';
 import {
   TableBody,
   TableContainer,
@@ -22,34 +22,38 @@ import {
   Avatar,
   Badge,
   Pagination,
-} from '@windmill/react-ui'
+} from '@windmill/react-ui';
 
 import {
   doughnutOptions,
   lineOptions,
   doughnutLegends,
   lineLegends,
-} from '../utils/demo/chartsData'
+} from '../utils/demo/chartsData';
+import { getCompany } from '../store/actions/action';
 
 function Dashboard() {
-  const [page, setPage] = useState(1)
-  const [data, setData] = useState([])
-
+  const [page, setPage] = useState(1);
+  const [data, setData] = useState([]);
+  const dispatch = useDispatch();
+  const companyData = useSelector((state) => state?.company.data?.data);
   // pagination setup
-  const resultsPerPage = 10
-  const totalResults = response.length
+  const resultsPerPage = 10;
+  const totalResults = response.length;
 
   // pagination change control
   function onPageChange(p) {
-    setPage(p)
+    setPage(p);
   }
 
   // on page change, load new sliced data
   // here you would make another server request for new data
   useEffect(() => {
-    setData(response.slice((page - 1) * resultsPerPage, page * resultsPerPage))
-  }, [page])
-
+    setData(response.slice((page - 1) * resultsPerPage, page * resultsPerPage));
+  }, [page]);
+  useEffect(() => {
+    dispatch(getCompany());
+  }, [companyData]);
   return (
     <>
       <PageTitle>Dashboard</PageTitle>
@@ -103,16 +107,19 @@ function Dashboard() {
               <TableCell>Phone</TableCell>
               <TableCell>Date</TableCell>
               <TableCell>User Role</TableCell>
-              {/* <TableCell>Amount</TableCell> */}
               <TableCell>Action</TableCell>
             </tr>
           </TableHeader>
           <TableBody>
-            {data.map((user, i) => (
+            {companyData?.map((user, i) => (
               <TableRow key={i}>
                 <TableCell>
                   <div className="flex items-center text-sm">
-                    <Avatar className="hidden mr-3 md:block" src={user.avatar} alt="User image" />
+                    <Avatar
+                      className="hidden mr-3 md:block"
+                      src={user.avatar}
+                      alt="User image"
+                    />
                     <div>
                       <p className="font-semibold">{user.name}</p>
                       {/* <p className="text-xs text-gray-600 dark:text-gray-400">{user.job}</p> */}
@@ -123,20 +130,21 @@ function Dashboard() {
                   <span className="text-sm"> {user.phone}</span>
                 </TableCell>
                 <TableCell>
-                  <span className="text-sm">{new Date(user.date).toLocaleDateString()}</span>
+                  <span className="text-sm">
+                    {new Date(user.createdAt).toLocaleDateString()}
+                  </span>
                 </TableCell>
                 <TableCell>
-                        <p className="text-xs text-gray-600 dark:text-gray-400">{user.job}</p>
-
+                  <p className="text-xs text-gray-600 dark:text-gray-400">
+                    {user.job}
+                  </p>
                 </TableCell>
                 {/* <TableCell>
                   <Badge type={user.status}>{user.status}</Badge>
                 </TableCell> */}
-                   <TableCell>
-          <Button icon={EditIcon} aria-label="Edit" />
-                
+                <TableCell>
+                  <Button icon={EditIcon} aria-label="Edit" />
                 </TableCell>
-                
               </TableRow>
             ))}
           </TableBody>
@@ -164,7 +172,7 @@ function Dashboard() {
         </ChartCard>
       </div> */}
     </>
-  )
+  );
 }
 
-export default Dashboard
+export default Dashboard;
