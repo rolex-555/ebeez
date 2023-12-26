@@ -27,8 +27,11 @@ import { FaCheckCircle } from "react-icons/fa";
 import User from '../users/User';
 import CompanyDetails from '../CompanyDetails/CompanyDetails';
 import Estimates from '../Estimates/Estimates';
-
+import { useLocation } from 'react-router-dom';
 export default function ManageCompanies() {
+  const location = useLocation();
+  const { user } = location.state || {};
+  console.log(">> USER ",user);
   const label = [
     {
       type: 'input',
@@ -112,10 +115,10 @@ export default function ManageCompanies() {
           </TabList>
           <TabPanel className="mt-4">
             <div className="w-full text-center text-xl mt-8 font-bold">
-              Ebiview
+            {user ? user.name : 'N/A'}
             </div>
             <div className="w-full text-center text-lg mt-4 font-semibold">
-              k199, Palm City, 54455, Florida United States
+            {user ? user.cityName : 'N/A'}
             </div>
             <div className="flex flex-row gap-12 mt-8 items-center">
               <div className="uploaderContainer">

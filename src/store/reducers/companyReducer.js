@@ -13,6 +13,12 @@ const initialState = {
         return { ...state, loading: false, data: action.payload, error: null };
       case 'GET_COMPANY_FAILURE':
         return { ...state, loading: false, data: null, error: action.payload };
+        case 'GET_ALLCOMPANY_REQUEST':
+          return { ...state, loading: false, data: action.payload}
+          case 'GET_ALLCOMPANY_SUCCESS':
+            return { ...state, loading: false, data: action.payload, error: null };
+          case 'GET_ALLCOMPANY_FAILURE':
+            return { ...state, loading: false, data: null, error: action.payload };
       default:
         return state;
     }

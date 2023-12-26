@@ -17,7 +17,6 @@ function Login() {
   const [password, setPassword] = useState('');
 
   const handleLogin = () => {
-    console.log(">> Login",email,password);
     dispatch(login(email, password));
   };
 

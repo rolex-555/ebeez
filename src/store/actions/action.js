@@ -6,6 +6,9 @@ export const GET_COMPANY_REQUEST = 'GET_COMPANY_REQUEST';
 export const GET_COMPANY_SUCCESS = 'GET_COMPANY_SUCCESS';
 export const GET_COMPANY_FAILURE = 'GET_COMPANY_FAILURE';
 
+export const GET_ALLCOMPANY_REQUEST = 'GET_ALLCOMPANY_REQUEST';
+export const GET_ALLCOMPANY_SUCCESS = 'GET_ALLCOMPANY_SUCCESS';
+export const GET_ALLCOMPANY_FAILURE = 'GET_ALLCOMPANY_FAILURE';
 
 // Action Creators
 export const getCompanyRequest = () => ({
@@ -22,36 +25,30 @@ export const getCompanyFailure = (error) => ({
   payload: error,
 });
 
-export const getCompany = () => {
-  return async (dispatch) => {
-    dispatch(getCompanyRequest());
-    // console.log('>> Company',process.env.development);
-    console.log('>> Company',COMPANY_GET)
+export const getAllCompanyRequest = () => ({
+  type: GET_ALLCOMPANY_REQUEST,
+});
 
+export const getAllCompanySuccess = (data) => ({
+  type: GET_ALLCOMPANY_SUCCESS,
+  payload: data,
+});
 
-    try {
-      const token =localStorage.getItem('authToken');
-      const headers = {
-        Authorization: `Bearer ${token}`,
-      };
-      const response = await axios.get(process.env.REACT_APP_COMPANY_URL, { headers });
-      
-      dispatch(getCompanySuccess(response.data));
-    } catch (error) {
-      dispatch(getCompanyFailure(error.message));
-    }
-  };
-};
+export const getAllCompanyFailure = (error) => ({
+  type: GET_ALLCOMPANY_FAILURE,
+  payload: error,
+});
+
 
 
 export const login = (email, password) => {
-  console.log("<>>> here",email,password);
     return async (dispatch) => {
       try {
         dispatch({ type: 'LOGIN_REQUEST' });
   
         const response = await axios.post(
-          process.env.REACT_BASE_URL_LOGIN,
+          // process.env.REACT_BASE_URL_LOGIN,
+          'https://ebeez.onrender.com/api/auth/login',
           { email, password },
           { headers: { 'Content-Type': 'application/json' } }
         );
@@ -68,7 +65,47 @@ export const login = (email, password) => {
       }
     };
   };
+
+  export const getCompany = () => {
+    return async (dispatch) => {
+      dispatch(getCompanyRequest());
   
+  
+      try {
+        const token =localStorage.getItem('authToken');
+        const response = await axios.get('https://ebeez.onrender.com/api/company/getCategory', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        
+        
+        dispatch(getCompanySuccess(response.data));
+      } catch (error) {
+        dispatch(getCompanyFailure(error.message));
+      }
+    };
+  };
+  export const getAllCompany = () => {
+    return async (dispatch) => {
+      dispatch(getAllCompanyRequest());
+  
+  
+      try {
+        const token =localStorage.getItem('authToken');
+        const response = await axios.get('https://ebeez.onrender.com/api/company/getCompany', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        
+        
+        dispatch(getAllCompanySuccess(response.data));
+      } catch (error) {
+        dispatch(getAllCompanyFailure(error.message));
+      }
+    };
+  };
   export const logout = () => {
     return { type: 'LOGOUT' };
   };

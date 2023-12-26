@@ -17,7 +17,7 @@ const routes = [
     name: 'Manage Companies',
   },
   {
-    path: '/app/cards',
+    path: '/app/contacts',
     icon: 'CardsIcon',
     name: 'Contacts',
   },
