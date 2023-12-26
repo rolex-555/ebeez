@@ -9,7 +9,10 @@ import * as serviceWorker from './serviceWorker'
 import { Provider } from 'react-redux';
 import store from './store/store';
 
-
+console.log("ENVS",process.env.REACT_APP_BASE_URL);
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+export const COMPANY_GET =process.env.REACT_APP_BASE_URL + '/api/company/getCategory';
+console.log("ENV2",COMPANY_GET);
 // if (process.env.NODE_ENV !== 'production') {
 //   const axe = require('react-axe')
 //   axe(React, ReactDOM, 1000)

@@ -1,5 +1,5 @@
-// File: actions.js
 import axios from 'axios';
+import {COMPANY_GET} from '../../index';
 
 // Action Types
 export const GET_COMPANY_REQUEST = 'GET_COMPANY_REQUEST';
@@ -25,14 +25,16 @@ export const getCompanyFailure = (error) => ({
 export const getCompany = () => {
   return async (dispatch) => {
     dispatch(getCompanyRequest());
+    // console.log('>> Company',process.env.development);
+    console.log('>> Company',COMPANY_GET)
+
 
     try {
       const token =localStorage.getItem('authToken');
       const headers = {
         Authorization: `Bearer ${token}`,
       };
-      const response = await axios.get('http://localhost:3001/api/company/getCategory', { headers });
-      // console.log('>> Company',response)
+      const response = await axios.get(process.env.REACT_APP_COMPANY_URL, { headers });
       
       dispatch(getCompanySuccess(response.data));
     } catch (error) {
@@ -49,7 +51,7 @@ export const login = (email, password) => {
         dispatch({ type: 'LOGIN_REQUEST' });
   
         const response = await axios.post(
-          'http://localhost:3001/api/auth/login',
+          process.env.REACT_BASE_URL_LOGIN,
           { email, password },
           { headers: { 'Content-Type': 'application/json' } }
         );

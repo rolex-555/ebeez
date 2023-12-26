@@ -53,7 +53,7 @@ function Dashboard() {
   }, [page]);
   useEffect(() => {
     dispatch(getCompany());
-  }, [companyData]);
+  }, []);
   return (
     <>
       <PageTitle>Dashboard</PageTitle>
@@ -103,10 +103,10 @@ function Dashboard() {
         <Table>
           <TableHeader>
             <tr>
-              <TableCell>Name</TableCell>
-              <TableCell>Phone</TableCell>
+              <TableCell>Category Name</TableCell>
+              {/* <TableCell>Phone</TableCell> */}
               <TableCell>Date</TableCell>
-              <TableCell>User Role</TableCell>
+              {/* <TableCell>User Role</TableCell> */}
               <TableCell>Action</TableCell>
             </tr>
           </TableHeader>
@@ -115,30 +115,30 @@ function Dashboard() {
               <TableRow key={i}>
                 <TableCell>
                   <div className="flex items-center text-sm">
-                    <Avatar
+                    {/* <Avatar
                       className="hidden mr-3 md:block"
                       src={user.avatar}
                       alt="User image"
-                    />
+                    /> */}
                     <div>
                       <p className="font-semibold">{user.name}</p>
                       {/* <p className="text-xs text-gray-600 dark:text-gray-400">{user.job}</p> */}
                     </div>
                   </div>
                 </TableCell>
-                <TableCell>
+                {/* <TableCell>
                   <span className="text-sm"> {user.phone}</span>
-                </TableCell>
+                </TableCell> */}
                 <TableCell>
                   <span className="text-sm">
                     {new Date(user.createdAt).toLocaleDateString()}
                   </span>
                 </TableCell>
-                <TableCell>
+                {/* <TableCell>
                   <p className="text-xs text-gray-600 dark:text-gray-400">
                     {user.job}
                   </p>
-                </TableCell>
+                </TableCell> */}
                 {/* <TableCell>
                   <Badge type={user.status}>{user.status}</Badge>
                 </TableCell> */}
