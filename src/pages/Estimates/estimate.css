@@ -1,0 +1,5 @@
+.rangePicker{
+    border-color: rgb(190 186 186) !important;
+    font-size: 0.875rem !important;
+    @apply flex w-full border pl-2 rounded-md p-[5px];
+}
